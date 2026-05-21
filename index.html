@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NovaDyne AI Security Gateway</title>
+  <title>NovaDyne AI Gateway</title>
 
   <style>
     body {
@@ -21,8 +21,8 @@
     }
 
     h1 {
-      color: #38bdf8;
       margin: 0;
+      color: #38bdf8;
     }
 
     .container {
@@ -36,7 +36,6 @@
       border-radius: 14px;
       padding: 20px;
       margin-bottom: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
     }
 
     input, button {
@@ -77,10 +76,6 @@
       display: none;
     }
 
-    .danger {
-      color: #f87171;
-    }
-
     footer {
       text-align: center;
       padding: 20px;
@@ -89,15 +84,15 @@
     }
   </style>
 
-  <!-- SECURITY NOTE -->
-  <!-- Never trust the AI filter -->
+  <!-- TODO: remove temporary admin username -->
+  <!-- Username: martin -->
 
 </head>
 <body>
 
 <header>
   <h1>NovaDyne AI Security Gateway</h1>
-  <p>Přístup do interní sítě společnosti</p>
+  <p>Interní bezpečnostní systém společnosti</p>
 </header>
 
 <div class="container">
@@ -107,11 +102,11 @@
 
     <p>
       Jste etický hackerský tým.
-      Vaším úkolem je získat tajný bezpečnostní FLAG společnosti NovaDyne.
+      Vaším úkolem je proniknout do interního systému společnosti NovaDyne.
     </p>
 
-    <p class="danger">
-      AI bezpečnostní systém automaticky blokuje podezřelé uživatele.
+    <p>
+      AI filtr pustí dál pouze správnou tajnou zprávu.
     </p>
   </div>
 
@@ -119,10 +114,18 @@
     <h2>AI Bezpečnostní Filtr</h2>
 
     <p>
-      Pro vstup do interní sítě musí vaše zpráva projít AI filtrem.
+      Zachycená šifrovaná zpráva:
     </p>
 
-    <input id="message" placeholder="Napiš bezpečnou zprávu...">
+    <div class="terminal">
+      KHOOR
+    </div>
+
+    <p>
+      Nápověda: Caesarova šifra posouvá písmena v abecedě.
+    </p>
+
+    <input id="message" placeholder="Zadej tajnou zprávu">
     <button onclick="checkMessage()">ODESLAT</button>
 
     <div id="filterResult" class="terminal hidden"></div>
@@ -133,11 +136,7 @@
     <h2>Interní Bezpečnostní Portál</h2>
 
     <p>
-      AI filtr vás pustil dál.
-    </p>
-
-    <p>
-      Pro přístup k zabezpečeným souborům je nutné přihlášení.
+      Přístup do sítě povolen.
     </p>
 
     <input id="username" placeholder="Uživatelské jméno">
@@ -152,18 +151,14 @@
     <h3>Zaměstnanci</h3>
 
     <ul>
-      <li>martin – IT administrátor</li>
+      <li>martin – admin</li>
       <li>eva – HR</li>
       <li>tomas – bezpečnost</li>
     </ul>
 
     <p>
       Interní poznámka:
-      Martin si hesla pořád zapisuje podle svého psa...
-    </p>
-
-    <p>
-      Jméno psa: <strong>Shadow</strong>
+      Administrátor Martin si prý hesla ukládá do různých částí systému.
     </p>
 
   </div>
@@ -173,15 +168,9 @@
     <h2>ADMIN PANEL</h2>
 
     <div class="terminal">
-      Přístup povolen.<br><br>
-
-      FLAG PART 2:<br>
-      d3bug_m3}
+      Přístup administrátora povolen.<br><br>
+      Systém úspěšně kompromitován.
     </div>
-
-    <p>
-      Administrátor zapomněl odstranit staré debug informace.
-    </p>
 
   </div>
 
@@ -193,10 +182,6 @@
 
 <script>
 
-  // FLAG PART 1: FLAG{4i_byp4ss_
-
-  const blockedWords = ["hack", "admin", "password", "virus"];
-
   function checkMessage() {
 
     const input = document.getElementById("message").value;
@@ -204,21 +189,17 @@
 
     result.classList.remove("hidden");
 
-    let blocked = false;
+    if(input.toUpperCase() === "HELLO") {
 
-    blockedWords.forEach(word => {
-      if(input.includes(word)) {
-        blocked = true;
-      }
-    });
-
-    if(blocked) {
-      result.innerHTML = "AI SYSTÉM: Podezřelá zpráva zablokována.";
-    }
-    else {
-      result.innerHTML = "AI SYSTÉM: Přístup povolen.";
+      result.innerHTML = "AI SYSTÉM: Tajná zpráva přijata. Přístup povolen.";
 
       document.getElementById("securityPage").classList.remove("hidden");
+
+    }
+    else {
+
+      result.innerHTML = "AI SYSTÉM: Neplatná zpráva.";
+
     }
 
   }
@@ -232,9 +213,7 @@
 
     result.classList.remove("hidden");
 
-    // TODO remove old admin account later
-
-    if(user === "martin" && pass.toLowerCase() === "shadow") {
+    if(user === "martin" && pass === "shadow2026") {
 
       result.innerHTML = "Přihlášení úspěšné.";
 
@@ -249,8 +228,11 @@
 
   }
 
-  console.log("Nápověda: AI filtry často nerozlišují velká a malá písmena.");
-  console.log("Další nápověda: Vývojáři schovávají věci v HTML komentářích.");
+  // Password part 1: shadow
+
+  console.log("Password part 2: 2026");
+
+  console.log("Nápověda: Programátoři často nechávají citlivé informace ve zdrojovém kódu.");
 
 </script>
 
